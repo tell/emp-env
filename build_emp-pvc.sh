@@ -49,5 +49,4 @@ cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
 	-DCMAKE_CXX_FLAGS="-I$ENV_PATH/include" \
 	.
 make VERBOSE=1
-make install
 popd
