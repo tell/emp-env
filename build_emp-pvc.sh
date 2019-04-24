@@ -20,8 +20,9 @@ git clone https://github.com/emp-toolkit/emp-tool.git
 ./patch_emp-tool.sh
 pushd emp-tool
 cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
-	-DCMAKE_C_FLAGS="-I$ENV_PATH/include" \
-	-DCMAKE_CXX_FLAGS="-I$ENV_PATH/include" \
+	-DCMAKE_C_FLAGS="-I$ENV_PATH/include -Wall -Wextra" \
+	-DCMAKE_CXX_STANDARD=11 \
+	-DCMAKE_CXX_FLAGS="-I$ENV_PATH/include -Wall -Wextra" \
 	-DTHREADING=on \
 	. 2>&1 > /dev/null
 make -j > /dev/null
@@ -33,8 +34,9 @@ git clone https://github.com/emp-toolkit/emp-ot.git
 ./patch_emp-ot.sh
 pushd emp-ot
 cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
-	-DCMAKE_C_FLAGS="-I$ENV_PATH/include" \
-	-DCMAKE_CXX_FLAGS="-I$ENV_PATH/include" \
+	-DCMAKE_C_FLAGS="-I$ENV_PATH/include -Wall -Wextra" \
+	-DCMAKE_CXX_STANDARD=11 \
+	-DCMAKE_CXX_FLAGS="-I$ENV_PATH/include -Wall -Wextra" \
 	. 2>&1 > /dev/null
 make -j > /dev/null
 make install > /dev/null
@@ -45,8 +47,9 @@ git clone https://github.com/emp-toolkit/emp-pvc.git
 ./patch_emp-pvc.sh
 pushd emp-pvc
 cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
-	-DCMAKE_C_FLAGS="-I$ENV_PATH/include" \
-	-DCMAKE_CXX_FLAGS="-I$ENV_PATH/include" \
+	-DCMAKE_C_FLAGS="-I$ENV_PATH/include -Wall -Wextra" \
+	-DCMAKE_CXX_STANDARD=11 \
+	-DCMAKE_CXX_FLAGS="-I$ENV_PATH/include -Wall -Wextra" \
 	.
 make VERBOSE=1
 popd
