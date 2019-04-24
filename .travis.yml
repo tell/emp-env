@@ -18,6 +18,8 @@ install:
 - docker exec -ti $MY_NAME bash -c "apt update" > /dev/null
 - docker exec -ti $MY_NAME bash -c "apt install -y cmake git build-essential libssl-dev libgmp-dev python libboost-dev libboost-{chrono,log,program-options,date-time,thread,system,filesystem,regex,test}-dev" > /dev/null
 - docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT; ./build_emp-pvc.sh"
+script:
+- echo Finished.
 notifications:
   on_success: change
   on_failure: always
