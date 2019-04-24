@@ -13,10 +13,10 @@ before_install:
 - docker pull $MY_TARGET_DIST
 - docker run --name $MY_NAME -v $TRAVIS_BUILD_DIR:$MY_TARGET_MOUNT -td $MY_TARGET_DIST /bin/bash
 install:
-- docker exec -ti $MY_NAME bash -c "sudo apt update" > /dev/null
-- docker exec -ti $MY_NAME bash -c "sudo apt install -y software-properties-common" > /dev/null
-- docker exec -ti $MY_NAME bash -c "sudo apt update" > /dev/null
-- docker exec -ti $MY_NAME bash -c "sudo apt install -y cmake git build-essential libssl-dev libgmp-dev python libboost-dev libboost-{chrono,log,program-options,date-time,thread,system,filesystem,regex,test}-dev" > /dev/null
+- docker exec -ti $MY_NAME bash -c "apt update" > /dev/null
+- docker exec -ti $MY_NAME bash -c "apt install -y software-properties-common" > /dev/null
+- docker exec -ti $MY_NAME bash -c "apt update" > /dev/null
+- docker exec -ti $MY_NAME bash -c "apt install -y cmake git build-essential libssl-dev libgmp-dev python libboost-dev libboost-{chrono,log,program-options,date-time,thread,system,filesystem,regex,test}-dev" > /dev/null
 notifications:
   on_success: change
   on_failure: always
