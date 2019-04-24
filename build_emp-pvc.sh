@@ -42,6 +42,7 @@ popd
 
 rm -rf emp-pvc
 git clone https://github.com/emp-toolkit/emp-pvc.git
+./patch_emp-pvc.sh
 pushd emp-pvc
 cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
 	-DCMAKE_C_FLAGS="-I$ENV_PATH/include" \
