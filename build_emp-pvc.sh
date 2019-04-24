@@ -30,6 +30,7 @@ popd
 
 rm -rf emp-ot
 git clone https://github.com/emp-toolkit/emp-ot.git
+./patch_emp-ot.sh
 pushd emp-ot
 cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
 	-DCMAKE_C_FLAGS="-I$ENV_PATH/include" \
