@@ -6,9 +6,20 @@ service:
 env:
   global:
   - MY_NAME=travis-ci
-  - MY_TARGET_DIST=ubuntu:18.04
   - MY_MODE="cpp"
   - MY_TARGET_MOUNT=/tell/emp-env
+matrix:
+  include:
+  - os: linux
+    dist: xenial
+    compiler: gcc
+    env:
+    - MY_TARGET_DIST=ubuntu:18.04
+  - os: linux
+    dist: xenial
+    compiler: gcc
+    env:
+    - MY_TARGET_DIST=ubuntu:16.04
 before_install:
 - docker pull $MY_TARGET_DIST
 - docker run --name $MY_NAME -v $TRAVIS_BUILD_DIR:$MY_TARGET_MOUNT -td $MY_TARGET_DIST /bin/bash
