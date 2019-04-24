@@ -51,5 +51,5 @@ cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
 	-DCMAKE_CXX_STANDARD=11 \
 	-DCMAKE_CXX_FLAGS="-I$ENV_PATH/include -Wall -Wextra" \
 	.
-make VERBOSE=1
+make -j
 popd
