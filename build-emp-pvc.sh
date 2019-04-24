@@ -17,6 +17,7 @@ popd
 
 rm -rf emp-tool
 git clone https://github.com/emp-toolkit/emp-tool.git
+./patch_emp-tool.sh
 pushd emp-tool
 cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
 	-DCMAKE_C_FLAGS="-I$ENV_PATH/include" \
