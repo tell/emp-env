@@ -4,6 +4,8 @@ set -ev
 if [ $# -gt 0 ]; then
 	echo 'Run in checking mode.'
 	check_mode=1
+else
+	check_mode=0
 fi
 
 rm -rf emp-env
