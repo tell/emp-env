@@ -1,0 +1,16 @@
+sudo: required
+os: linux
+dist: xenial
+service:
+- docker
+env:
+  global:
+  - MY_NAME=travis-ci
+  - MY_TARGET_DIST=ubuntu:18.04
+  - MY_MODE="cpp"
+  - MY_TARGET_MOUNT=/tell/emp-env
+before_install:
+- docker pull $MY_TARGET_DIST
+- docker run --name $MY_NAME -v $TRAVIS_BUILD_DIR:$MY_TARGET_MOUNT -td $MY_TARGET_DIST /bin/bash
+- docker exec -ti $MY_NAME bash -c "sudo apt update" > /dev/null
+# vim: set expandtab shiftwidth=2 softtabstop=2 :
