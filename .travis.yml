@@ -49,7 +49,7 @@ before_install:
 - docker exec -ti $MY_NAME bash -c "apt install -y cmake git build-essential libssl-dev libgmp-dev python libboost-dev libboost-{chrono,log,program-options,date-time,thread,system,filesystem,regex,test}-dev" > /dev/null
 - docker exec -ti $MY_NAME bash -c "cmake --version"
 install:
-- docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT; ./build_emp-pvc.sh"
+- docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT; env MY_BUILD_TYPE=$MY_BUILD_TYPE ./build_emp-pvc.sh"
 script:
 - docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT/emp-pvc/bin; ./test_pvc.cpp_exe aes alice & ./test_pvc.cpp_exe aes bob"
 - docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT/emp-pvc/bin; ./test_pvc.cpp_exe sha1 alice & ./test_pvc.cpp_exe sha1 bob"
