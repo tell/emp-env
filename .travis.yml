@@ -34,6 +34,10 @@ install:
 - docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT; ./build_emp-pvc.sh"
 script:
 - docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT/emp-pvc/bin; ./test_pvc.cpp_exe aes alice & ./test_pvc.cpp_exe aes bob"
+- docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT/emp-pvc/bin; ./test_pvc.cpp_exe sha1 alice & ./test_pvc.cpp_exe sha1 bob"
+- docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT/emp-pvc/bin; ./test_pvc.cpp_exe mult alice & ./test_pvc.cpp_exe mult bob"
+- docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT/emp-pvc/bin; ./test_pvc.cpp_exe sort alice & ./test_pvc.cpp_exe sort bob"
+- docker exec -ti $MY_NAME bash -c "cd $MY_TARGET_MOUNT/emp-pvc/bin; ./test_pvc.cpp_exe ham alice & ./test_pvc.cpp_exe ham bob"
 notifications:
   on_success: change
   on_failure: always
