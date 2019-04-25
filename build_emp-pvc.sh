@@ -1,13 +1,6 @@
 #!/usr/bin/env bash
 set -ev
 
-if [ $# -gt 0 ]; then
-	echo 'Run in checking mode.'
-	check_mode=1
-else
-	check_mode=0
-fi
-
 rm -rf emp-env
 mkdir emp-env
 export ENV_PATH=$(realpath emp-env)
@@ -25,9 +18,6 @@ popd
 
 rm -rf emp-tool
 git clone https://github.com/emp-toolkit/emp-tool.git
-if [ $check_mode -eq 0 ]; then
-	./patch_emp-tool.sh
-fi
 pushd emp-tool
 git log -1 | cat
 cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
@@ -42,9 +32,6 @@ popd
 
 rm -rf emp-ot
 git clone https://github.com/emp-toolkit/emp-ot.git
-if [ $check_mode -eq 0 ]; then
-	./patch_emp-ot.sh
-fi
 pushd emp-ot
 git log -1 | cat
 cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
@@ -58,9 +45,6 @@ popd
 
 rm -rf emp-pvc
 git clone https://github.com/emp-toolkit/emp-pvc.git
-if [ $check_mode -eq 0 ]; then
-	./patch_emp-pvc.sh
-fi
 pushd emp-pvc
 git log -1 | cat
 cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
