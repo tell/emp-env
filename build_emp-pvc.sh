@@ -47,10 +47,15 @@ rm -rf emp-pvc
 git clone https://github.com/emp-toolkit/emp-pvc.git
 pushd emp-pvc
 git log -1 | cat
+if [ -z "$MY_BUILD_TYPE" ]; then
+	MY_BUILD_TYPE=Release
+fi
+echo MY_BUILD_TYPE=$MY_BUILD_TYPE
 cmake -DCMAKE_INSTALL_PREFIX=$ENV_PATH \
 	-DCMAKE_C_FLAGS="-I$ENV_PATH/include -Wall -Wextra" \
 	-DCMAKE_CXX_STANDARD=11 \
 	-DCMAKE_CXX_FLAGS="-I$ENV_PATH/include -Wall -Wextra" \
+	-DCMAKE_BUILD_TYPE=$MY_BUILD_TYPE \
 	.
 make -j
 popd

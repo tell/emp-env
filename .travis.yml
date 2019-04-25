@@ -14,14 +14,17 @@ matrix:
     compiler: gcc
     env:
     - MY_TARGET_DIST=ubuntu:19.04
+    - MY_BUILD_TYPE=Relaese
   - os: linux
     compiler: gcc
     env:
     - MY_TARGET_DIST=ubuntu:18.04
+    - MY_BUILD_TYPE=Relaese
   - os: linux
     compiler: gcc
     env:
     - MY_TARGET_DIST=ubuntu:16.04
+    - MY_BUILD_TYPE=Relaese
 before_install:
 - docker pull $MY_TARGET_DIST
 - docker run --name $MY_NAME -v $TRAVIS_BUILD_DIR:$MY_TARGET_MOUNT -td $MY_TARGET_DIST /bin/bash
