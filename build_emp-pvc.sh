@@ -1,9 +1,17 @@
 #!/usr/bin/env bash
 set -ev
 
+if which realpath; then
+	cmd_realpath='realpath'
+elif which grealpath; then
+	cmd_realpath='grealpath'
+else
+	exit 1
+fi
+
 rm -rf emp-env
 mkdir emp-env
-export ENV_PATH=$(realpath emp-env)
+export ENV_PATH=$($cmd_realpath emp-env)
 
 rm -rf relic
 git clone https://github.com/relic-toolkit/relic.git
